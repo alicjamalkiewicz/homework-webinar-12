@@ -12,22 +12,22 @@ public class ExceptionsApp {
 
         // wewnątrz bloku try podajemy fragment kodu, który potencjalnie może rzucić wyjątek
         // w momencie wyjątku wykonuje się odpowiedni blok catch
-        try {
-            System.out.println(numbers[0]); // tutaj idziemy do linii 16
-            //System.out.println(name.length());
-        } catch (NullPointerException exception) {
-            System.out.println("Wywołujesz metodę na obiekcie null");
-        } catch (ArrayIndexOutOfBoundsException exception) {
-            System.out.println("Odwołujesz się poza zakres tablicy");
-        } finally { // dodajemy instrukcje, które muszą się wykonać niezależnie czy jest wyjątek czy nie
-            System.out.println("Koniec try...catch");
-        }
-
-        try {
-            System.out.println(numbers[0]);
-        } catch (Exception exception) { // przechwytujemy jakikolwiek wyjątek
-            exception.printStackTrace();
-        }
+//        try {
+//            System.out.println(numbers[0]); // tutaj idziemy do linii 16
+//            //System.out.println(name.length());
+//        } catch (NullPointerException exception) {
+//            System.out.println("Wywołujesz metodę na obiekcie null");
+//        } catch (ArrayIndexOutOfBoundsException exception) {
+//            System.out.println("Odwołujesz się poza zakres tablicy");
+//        } finally { // dodajemy instrukcje, które muszą się wykonać niezależnie czy jest wyjątek czy nie
+//            System.out.println("Koniec try...catch");
+//        }
+//
+//        try {
+//            System.out.println(numbers[0]);
+//        } catch (Exception exception) { // przechwytujemy jakikolwiek wyjątek
+//            exception.printStackTrace();
+//        }
 
         String number = "1234677890";
 
@@ -43,14 +43,17 @@ public class ExceptionsApp {
         System.out.println("\n-------ZADANIE DOMOWE 07.10-------\n");
 
 
-        String name = "name";
+        String name = null;
 
         try {
             checkNameNotEmpty(name);
             System.out.println("Great, the name is not empty");
         } catch (ImproperNameException e) {
             System.out.println("Incorrect name error");
-            System.out.println("Provided name " + e.getName() + "is empty/null");
+            System.out.println("Provided name " + e.getName() + "is empty");
+        } catch (NullPointerException e){
+            System.out.println("Incorrect name error");
+            System.out.println("Provided name " + e.getName() + "is empty");
         }
         System.out.println("Finito");
     }
@@ -63,7 +66,7 @@ public class ExceptionsApp {
     }
 
     public static void checkNameNotEmpty(String name) throws ImproperNameException {
-        if (name.isEmpty()) {
+        if (name.isEmpty() || name == null) {
             throw new ImproperNameException(name);
 //        } else {
 //            name = null;
