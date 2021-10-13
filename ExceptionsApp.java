@@ -6,7 +6,7 @@ ZADANIE DOMOWE:
 String jest null lub pusty
  */
 public class ExceptionsApp {
-    public static void main(String[] args) throws ImproperNumberException, ImproperNameException {
+    public static void main(String[] args) throws ImproperNumberException, ImproperNameException, NullPointerException {
         int[] numbers = {1, 2, 3, 4, 5};
         //String name = null;
 
@@ -65,13 +65,9 @@ public class ExceptionsApp {
         }
     }
 
-    public static void checkNameNotEmpty(String name) throws ImproperNameException {
+    public static void checkNameNotEmpty(String name) throws ImproperNameException, NullPointerException {
         if (name.isEmpty() || name == null) {
             throw new ImproperNameException(name);
-//        } else {
-//            name = null;
-//            throw new ImproperNameException(null);
-//        }
         }
     }
 
